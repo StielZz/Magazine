@@ -1,0 +1,22 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+    <h3>Личный кабинет</h3>
+    {% if user.is_authenticated %}
+        <p>Добро пожаловать, {{ user.username }}! <a href="{% url 'logout' %}">Выйти</a></p>
+        <h3>Корзина</h3>
+        {% if products %}
+            <a href="{% url 'place_order' %}" class="btn btn-success">Заказать</a>
+        {% endif %}
+        {% for product in products %}
+            <ul>
+                <li><p>{{product.name}} {{ product.price }} руб.</p> <a href="{% url 'remove_from_cart' product.id %}">Убрать из корзины</a>
+                </li>
+            </ul>
+            {% empty %}
+            <p>Пусто</p>
+        {% endfor %}
+    {% else %}
+        <p>Вы не авторизованы! <a href="{% url 'login' %}">Войти</a></p>
+    {% endif %}
+{% endblock %}

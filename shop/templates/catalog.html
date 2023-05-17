@@ -1,0 +1,36 @@
+{% extends 'base_generic.html' %}
+
+{% block filter %}
+    <div style="margin: 3px 0 5px 15px; display: flex; flex-direction: column;">
+        <a href="/catalog/pc" style="width: 120px">Только Пк</a>
+        <a href="/catalog/laptop" style="width: 120px">Только Ноутбуки</a>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+    <form action="{% url 'search_product' %}" method="GET">
+        <label>
+            <input type="text" name="query" placeholder="Введите название товара">
+        </label>
+        <button type="submit">Найти</button>
+    </form>
+
+    <h3>Список товаров</h3>
+    <ul style="display: flex; flex-wrap: wrap;">
+        {% if products %}
+            {% for product in products %}
+                <div style="margin-bottom: 40px; margin-right: 40px; flex-basis: calc(100% / 4); max-width: calc(100% / 3);">
+                    <img src="{{ product.image.url }}" style="width: 150px; height: 150px">
+                    <li style="max-width: 150px;">{{ product.name }}</li>
+                    <li style="max-width: 150px;">Количество просмотров:{{ product.view_count }}</li>
+                    <li style="max-width: 150px;">Количество заказов:{{ product.order_count }}</li>
+                    <li>{{ product.price }} руб</li>
+                    <a href="{% url 'product_detail' product_id=product.id %}">Подробности</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>На данный момент такого товара нет </p>
+        {% endif %}
+    </ul>
+{% endblock %}

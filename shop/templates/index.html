@@ -1,0 +1,23 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+
+    <h3>Информация</h3>
+
+    <ul>
+        <li>Всего товаров: {{ products_count }} Пк: {{ pc_count }} Ноутбуков: {{ laptop_count }}</li>
+        <li>Самый дешевый: {{ min_price }} руб</li>
+        <li>Самый дорогой: {{ max_price }} руб</li>
+        <li>Стоимость всех товаров: {{ total_price }} руб</li>
+    </ul>
+
+    <h3>Контакты</h3>
+
+    <div>
+        <p>123 Main St.</p>
+        <p>New York, NY 10001</p>
+        <p>Телефон: (555) 555-1212</p>
+        <p>Почта: info@example.com</p>
+    </div>
+
+{% endblock %}

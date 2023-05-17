@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Магазин</title>
+</head>
+<body>
+    <div style="display: flex">
+        <div style="margin: 10px 50px 0 10px">
+
+            <div>
+                <a href="/">Главная</a>
+            </div>
+
+            <div>
+                <a href="/catalog">Каталог</a>
+                {% block filter %} {% endblock %}
+            </div>
+
+            <div>
+                <a href="/account">Личный кабинет</a>
+            </div>
+        </div>
+
+        <div style="margin-left: 50px">
+            <h2>Магазин ПК и Ноутобуков</h2>
+
+            {% block content %} {% endblock %}
+
+        </div>
+    </div>
+</body>
+</html>

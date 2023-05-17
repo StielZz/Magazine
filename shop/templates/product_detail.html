@@ -1,0 +1,13 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+    <h3>Информация о товаре</h3>
+    <div style="display: flex;">
+        <img src="{{ product.image.url }}" style="width: 200px; height: 200px">
+        <p style="max-width: 200px;">{{ product.name }}<br><br>{{ product.description }}<br><br>{{ product.price }} руб</p>
+    </div>
+    {%  if user.is_authenticated %}
+        <a href="{% url 'add_to_cart' product.id %}">Добавить в корзину</a>
+    {% endif %}
+
+{% endblock %}
