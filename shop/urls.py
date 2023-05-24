@@ -11,6 +11,7 @@ urlpatterns = [
     path('catalog/pc', views.catalog_pc, name='catalog'),
     path('catalog/laptop', views.catalog_laptop, name='catalog'),
     path('catalog/search', views.search_product, name='search_product'),
+    path('catalog/segmentation', views.product_segmentation, name='product_segmentation'),
     path('catalog/product_detail/<int:product_id>/', views.product_detail, name='product_detail'),
     path('catalog/product_detail/add_to_card/<int:product_id>/', views.add_to_cart, name='add_to_cart'),
 

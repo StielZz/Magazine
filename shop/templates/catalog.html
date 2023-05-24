@@ -9,12 +9,17 @@
 
 {% block content %}
 
-    <form action="{% url 'search_product' %}" method="GET">
-        <label>
+    <div style="display: flex">
+        <form style="margin-right: 50px" action="{% url 'search_product' %}" method="GET">
             <input type="text" name="query" placeholder="Введите название товара">
-        </label>
-        <button type="submit">Найти</button>
-    </form>
+            <button type="submit">Найти</button>
+        </form>
+        <form method="GET" action="{% url 'product_segmentation' %}">
+            <input type="text" name="min_price" placeholder="Минимальная цена">
+            <input type="text" name="max_price" placeholder="Максимальная цена">
+            <button type="submit">Найти</button>
+        </form>
+    </div>
 
     <h3>Список товаров</h3>
     <ul style="display: flex; flex-wrap: wrap;">

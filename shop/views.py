@@ -52,6 +52,22 @@ def search_product(request):
     return render(request, 'search.html', {'products': products, 'query': query})
 
 
+def product_segmentation(request):
+    min_price = request.GET.get('min_price')
+    max_price = request.GET.get('max_price')
+
+    if min_price and max_price:
+        products = Product.objects.filter(price__gte=min_price, price__lte=max_price)
+    elif min_price:
+        products = Product.objects.filter(price__gte=min_price)
+    elif max_price:
+        products = Product.objects.filter(price__lte=max_price)
+    else:
+        products = Product.objects.all()
+
+    return render(request, 'catalog.html', {'products': products})
+
+
 def account(request):
     if request.user.is_authenticated:
         cart = Cart.objects.get_or_create(user=request.user)[0]
